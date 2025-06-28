@@ -34,7 +34,16 @@ class ClienteController:
         )
         """
         self.db.execute(query)
+        # Establecer el valor inicial del AUTOINCREMENT en 100 si es la primera vez
+        self._set_autoincrement_start(100)
         log_info("Tabla 'clientes' verificada o creada.")
+
+    def _set_autoincrement_start(self, start_value):
+        # Verifica si la secuencia ya existe
+        seq = self.db.fetchone("SELECT seq FROM sqlite_sequence WHERE name='clientes'")
+        if not seq:
+            # Inserta el valor inicial (start_value - 1) porque SQLite suma 1 al siguiente insert
+            self.db.execute("INSERT INTO sqlite_sequence (name, seq) VALUES (?, ?)", ("clientes", start_value - 1))
 
     def alta_cliente(self, cliente):
         query = "INSERT INTO clientes (nombre, apellido, email) VALUES (?, ?, ?)"
