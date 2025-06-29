@@ -9,6 +9,10 @@ class Cliente:
         apellido (str): apellido del cliente.
         email (str): direccion correo electronica del cliente.
 
+        Para simplificar el codigo no se validaran los tipos de datos
+        Por ejemplo el email no se validara si es un email valido o no.
+        pero si se validara que los campos no esten vacios, ya que
+        la base de datos no permite campos vacios. 
         """
         if nombre is None or nombre.strip() == "":
             raise ValueError("El nombre no puede estar vacío.")

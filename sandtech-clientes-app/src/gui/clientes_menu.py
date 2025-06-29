@@ -1,6 +1,6 @@
 from tkinter import Tk, Menu, messagebox, Toplevel, Label, Entry, Button, Listbox, END
 from controllers.cliente_controller import ClienteController
-from models.cliente import Cliente  # Asegúrate de importar la clase Cliente
+from models.cliente import Cliente
 
 class ClientesMenu:
     def __init__(self, master):

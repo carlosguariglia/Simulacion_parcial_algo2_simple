@@ -18,6 +18,7 @@ class ClienteController:
     def __del__(self):  
         """  
         Destructor que cierra la conexión a la base de datos cuando se destruye el controlador.  
+        No es una forma efectiva y el garbage collector de Python no garantiza que se llame inmediatamente.
         """  
         if hasattr(self, 'db') and self.db:  
             self.db.close_connection()  
